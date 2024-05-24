@@ -88,3 +88,15 @@ export const addMyHotel = async (hotelFormData: FormData) => {
 
 //   return response.json();
 // };
+
+export const fetchMyHotel = async () => {
+  const response = await axios.get("http://localhost:5000/api/my-hotels", {
+    withCredentials: true,
+  });
+
+  if (response.status !== 200) {
+    throw new Error(response.data.message);
+  }
+
+  return response.data;
+};
