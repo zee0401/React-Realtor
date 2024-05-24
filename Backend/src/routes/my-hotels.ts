@@ -56,7 +56,7 @@ router.post(
       const hotel = new Hotel(newHotel);
       await hotel.save();
 
-      res.status(201).send(hotel);
+      res.status(200).send(hotel);
     } catch (error) {
       console.log("Error Creating the hotel:", error);
       res.status(500).json({ message: "something went wrong" });
