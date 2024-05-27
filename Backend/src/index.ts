@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:5000",
+    origin: ["*"],
     credentials: true,
   })
 );
@@ -40,6 +40,6 @@ app.get("*", (req: Request, res: Response) => {
 mongoose.connect(process.env.MONGO_URL_STRING as string).then(() => {
   console.log("database is connected successfully");
 });
-app.listen(7000, () => {
+app.listen(5000, () => {
   console.log("server is running in port :5000");
 });

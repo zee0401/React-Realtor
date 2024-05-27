@@ -1,6 +1,7 @@
 import { RegisterFormData } from "../pages/Register";
 import axios from "axios";
 import { SignInFormData } from "../pages/SignIn";
+import { HotelType } from "../forms/ManageHotelForm/ManageHotelForm";
 
 export const registerUser = async (formData: RegisterFormData) => {
   const response = await axios.post(
@@ -89,7 +90,7 @@ export const addMyHotel = async (hotelFormData: FormData) => {
 //   return response.json();
 // };
 
-export const fetchMyHotel = async () => {
+export const fetchMyHotel = async (): Promise<HotelType> => {
   const response = await axios.get("http://localhost:5000/api/my-hotels", {
     withCredentials: true,
   });
