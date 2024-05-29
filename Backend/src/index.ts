@@ -20,9 +20,17 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// app.use(
+//   cors({
+//     origin: ["*"],
+//     credentials: true,
+//   })
+// );
+
+const allowedOrigins = ["http://localhost:3000", "http://localhost:5173", "*"];
 app.use(
   cors({
-    origin: ["*"],
+    origin: allowedOrigins,
     credentials: true,
   })
 );

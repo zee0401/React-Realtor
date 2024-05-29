@@ -2,7 +2,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import DetailsSection from "./DetailsSection";
 import TypeSection from "./TypeSection";
 import FacilitiesSection from "./FacilitiesSection";
-import GuestSection from "./GuestSection";
+import GuestsSection from "./GuestsSection";
 import ImagesSection from "./ImagesSection";
 import { useEffect } from "react";
 
@@ -53,7 +53,7 @@ export type HotelFormData = {
 };
 
 type Props = {
-  hotel?: HotelType;
+  hotel: HotelType;
   onSave: (HotelFormData: FormData) => void;
   isLoading: boolean;
 };
@@ -104,7 +104,7 @@ const ManageHotelForm = ({ onSave, isLoading, hotel }: Props) => {
         <DetailsSection />
         <TypeSection />
         <FacilitiesSection />
-        <GuestSection />
+        <GuestsSection />
         <ImagesSection />
         <span className="flex justify-end">
           <button

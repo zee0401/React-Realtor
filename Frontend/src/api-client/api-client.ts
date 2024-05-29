@@ -1,7 +1,8 @@
 import { RegisterFormData } from "../pages/Register";
 import axios from "axios";
 import { SignInFormData } from "../pages/SignIn";
-import { HotelType } from "../forms/ManageHotelForm/ManageHotelForm";
+
+import { HotelType } from "../../../backend/src/shared/types";
 
 export const registerUser = async (formData: RegisterFormData) => {
   const response = await axios.post(
@@ -90,11 +91,37 @@ export const addMyHotel = async (hotelFormData: FormData) => {
 //   return response.json();
 // };
 
-export const fetchMyHotel = async (): Promise<HotelType> => {
+export const fetchMyHotels = async (): Promise<HotelType[]> => {
   const response = await axios.get("http://localhost:5000/api/my-hotels", {
     withCredentials: true,
   });
 
+  if (response.status !== 200) {
+    throw new Error(response.data.message);
+  }
+
+  return response.data;
+};
+
+// export const fetchMyHotels = async (): Promise<HotelType[]> => {
+//   const response = await fetch("http://localhost:5000//api/my-hotels", {
+//     credentials: "include",
+//   });
+
+//   if (!response.ok) {
+//     throw new Error("Error fetching hotels");
+//   }
+
+//   return response.json();
+// };
+
+export const fetchMyHotelById = async (hotelId: string) => {
+  const response = await axios.get(
+    `http://localhost:5000/api/my-hotels/${hotelId}`,
+    {
+      withCredentials: true,
+    }
+  );
   if (response.status !== 200) {
     throw new Error(response.data.message);
   }
