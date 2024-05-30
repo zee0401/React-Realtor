@@ -1,22 +1,5 @@
-import mongoose, { mongo } from "mongoose";
-
-export type HotelType = {
-  _id: string;
-  userId: string;
-  name: string;
-  city: string;
-  country: string;
-  description: string;
-  type: string;
-  adultCount: number;
-  childCount: number;
-  facilities: string[];
-  pricePerNight: number;
-  starRating: number;
-  imageUrls: string[];
-  lastUpdated: Date;
-  // bookings: BookingType[];
-};
+import mongoose from "mongoose";
+import { HotelType } from "../shared/types";
 
 const hotelSchema = new mongoose.Schema<HotelType>({
   userId: {
@@ -54,6 +37,18 @@ const hotelSchema = new mongoose.Schema<HotelType>({
     required: true,
   },
   starRating: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 5,
+  },
+  childCount: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 5,
+  },
+  adultCount: {
     type: Number,
     required: true,
     min: 1,

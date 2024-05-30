@@ -128,3 +128,39 @@ export const fetchMyHotelById = async (hotelId: string) => {
 
   return response.data;
 };
+
+export const updateMyHotel = async (hotelFormData: FormData) => {
+  const response = await axios.put(
+    `http://localhost:5000/api/my-hotels/${hotelFormData.get("hotelId")}`,
+    hotelFormData,
+    {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+
+  if (response.status !== 201) {
+    throw new Error(response.data.message);
+  }
+
+  return response.data;
+};
+
+// export const updateMyHotel = async (hotelFormData: FormData) => {
+//   const response = await fetch(
+//     `http://localhost:5000/api/my-hotels/${hotelFormData.get("hotelId")}`,
+//     {
+//       method: "PUT",
+//       body: hotelFormData,
+//       credentials: "include",
+//     }
+//   );
+
+//   if (!response.ok) {
+//     throw new Error("Failed to update Hotel");
+//   }
+
+//   return response.json();
+// };

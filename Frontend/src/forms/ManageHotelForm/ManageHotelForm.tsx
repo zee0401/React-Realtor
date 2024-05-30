@@ -53,7 +53,7 @@ export type HotelFormData = {
 };
 
 type Props = {
-  hotel: HotelType;
+  hotel?: HotelType;
   onSave: (HotelFormData: FormData) => void;
   isLoading: boolean;
 };
@@ -79,8 +79,8 @@ const ManageHotelForm = ({ onSave, isLoading, hotel }: Props) => {
     formData.append("type", formDataJson.type);
     formData.append("pricePerNight", formDataJson.pricePerNight.toString());
     formData.append("starRating", formDataJson.starRating.toString());
-    formData.append("adultCount", formDataJson.adultCount.toString());
     formData.append("childCount", formDataJson.childCount.toString());
+    formData.append("adultCount", formDataJson.adultCount.toString());
 
     formDataJson.facilities.forEach((facility, index) => {
       formData.append(`facilities[${index}]`, facility);

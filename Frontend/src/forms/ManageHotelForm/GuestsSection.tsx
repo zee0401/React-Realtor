@@ -20,7 +20,7 @@ const GuestsSection = () => {
             {...register("adultCount", {
               required: "This field is required",
             })}
-          />
+          ></input>
           {errors.adultCount?.message && (
             <span className="text-red-500 text-sm fold-bold">
               {errors.adultCount?.message}
